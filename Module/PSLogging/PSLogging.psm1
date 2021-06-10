@@ -59,6 +59,11 @@ Function Start-Log {
     Author:         Luca Sturlese
     Creation Date:  12/09/15
     Purpose/Change: Added -ToScreen parameter which will display content to screen as well as write to the log file.
+	
+    Version:        1.4.1
+    Author:         natiT
+    Creation Date:  06/10/2021
+    Purpose/Change: Fixed Importing Bug where in Powershell 6 and above the character - was not recognized (https://github.com/9to5IT/PSLogging/issues/13)
 
   .LINK
     http://9to5IT.com/powershell-logging-v2-easily-create-log-files
@@ -88,8 +93,8 @@ Function Start-Log {
     }
 
     #Create file and start logging
-    New-Item -Path $sFullPath –ItemType File
-
+	New-Item -Path $sFullPath -ItemType File
+	
     Add-Content -Path $sFullPath -Value "***************************************************************************************************"
     Add-Content -Path $sFullPath -Value "Started processing at [$([DateTime]::Now)]."
     Add-Content -Path $sFullPath -Value "***************************************************************************************************"
